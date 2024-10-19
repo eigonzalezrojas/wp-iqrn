@@ -1,0 +1,45 @@
+# Archivos y carpetas relacionadas con WordPress
+wp-config.php
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/cache/
+wp-content/backup-*/ 
+
+# Bases de datos locales
+*.sql
+*.sqlite
+*.db
+
+# Archivos de configuración del servidor
+.htaccess
+web.config
+
+# Archivos temporales y de log
+*.log
+*.tmp
+*.swp
+error_log
+debug.log
+
+# Archivos ocultos de sistemas operativos
+.DS_Store
+Thumbs.db
+
+# Directorio de vendor (si usas Composer)
+vendor/
+composer.lock
+composer.phar
+
+# Node.js (si estás utilizando herramientas como gulp o npm)
+node_modules/
+npm-debug.log
+
+# Dependencias de IDEs y entornos de desarrollo
+.vscode/
+.idea/
+*.code-workspace
+
+# Archivos de configuración de FTP y de despliegue
+ftpquota
+.ssh/
+*.pem
