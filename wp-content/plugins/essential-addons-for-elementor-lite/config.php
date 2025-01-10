@@ -227,6 +227,11 @@ $config = [
                         'context' => 'view',
                     ],
                     [
+                        'file' => EAEL_PLUGIN_PATH . 'assets/front-end/css/lib-view/tooltipster/tooltipster-theme.min.css',
+                        'type' => 'lib',
+                        'context' => 'view',
+                    ],
+                    [
                         'file' => EAEL_PLUGIN_PATH . 'assets/front-end/css/view/price-table.min.css',
                         'type' => 'self',
                         'context' => 'view',
@@ -388,11 +393,6 @@ $config = [
                     ],
                 ],
                 'js' => [
-	                [
-		                'file' => EAEL_PLUGIN_PATH . '/assets/front-end/js/lib-view/dom-purify/purify.min.js',
-		                'type' => 'lib',
-		                'context' => 'view',
-	                ],
                     [
                         'file' => EAEL_PLUGIN_PATH . 'assets/front-end/js/lib-view/imagesloaded/imagesloaded.pkgd.min.js',
                         'type' => 'lib',

@@ -19,8 +19,7 @@ class Olympus_Google_Fonts {
 		$this->constants();
 		$this->includes();
 		$this->compatibility();
-
-		add_action( 'init', array( $this, 'load_textdomain' ) );
+		$this->load_textdomain();
 
 		add_action( 'ogf_inline_styles', array( $this, 'enqueue' ), 0 );
 		add_filter( 'wp_resource_hints', array( $this, 'resource_hints' ), 10, 2 );
@@ -39,7 +38,7 @@ class Olympus_Google_Fonts {
 	 */
 	public function constants() {
 		if ( ! defined( 'OGF_VERSION' ) ) {
-			define( 'OGF_VERSION', '3.7.9' );
+			define( 'OGF_VERSION', '3.8.3' );
 		}
 
 		if ( ! defined( 'OGF_DIR_PATH' ) ) {
@@ -55,6 +54,10 @@ class Olympus_Google_Fonts {
 	 * Load plugin files.
 	 */
 	public function includes() {
+		// Required files for the Gutenberg editor.
+		require_once OGF_DIR_PATH . 'blocks/init.php';
+		require_once OGF_DIR_PATH . 'includes/gutenberg/output-css.php';
+
 		// Custom uploads functionality.
 		require_once OGF_DIR_PATH . 'includes/class-ogf-fonts-taxonomy.php';
 		require_once OGF_DIR_PATH . 'admin/class-ogf-upload-fonts-screen.php';
@@ -67,14 +70,10 @@ class Olympus_Google_Fonts {
 		require_once OGF_DIR_PATH . 'includes/customizer/panels.php';
 		require_once OGF_DIR_PATH . 'includes/customizer/settings.php';
 		require_once OGF_DIR_PATH . 'includes/customizer/output-css.php';
-		require_once OGF_DIR_PATH . 'includes//customizer/class-ogf-optimization-controls.php';
+		require_once OGF_DIR_PATH . 'includes/customizer/class-ogf-optimization-controls.php';
 
 		// Required files for the Typekit integration.
 		require_once OGF_DIR_PATH . 'includes/class-ogf-typekit.php';
-
-		// Required files for the Gutenberg editor.
-		require_once OGF_DIR_PATH . 'blocks/init.php';
-		require_once OGF_DIR_PATH . 'includes/gutenberg/output-css.php';
 
 		// Notifications class.
 		require_once OGF_DIR_PATH . 'includes/class-ogf-notifications.php';
@@ -97,7 +96,7 @@ class Olympus_Google_Fonts {
 	}
 
 	/**
-	 * Load plugin textdomain.
+	 * Load compatibility packs for themes and plugins.
 	 */
 	public function compatibility() {
 		$current_theme      = wp_get_theme();
@@ -215,6 +214,10 @@ class Olympus_Google_Fonts {
 		$settings_link = '<a href="' . esc_url( $customizer_url ) . '">' . esc_html__( 'Settings', 'olympus-google-fonts' ) . '</a>';
 
 		array_push( $links, $settings_link );
+
+		$docs_link = '<a href="https://docs.fontsplugin.com">' . esc_html__( 'Documentation', 'olympus-google-fonts' ) . '</a>';
+
+		array_push( $links, $docs_link );
 
 		if ( ! defined( 'OGF_PRO' ) ) {
 			// Upgrade Link.
