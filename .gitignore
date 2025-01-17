@@ -43,3 +43,4 @@ npm-debug.log
 ftpquota
 .ssh/
 *.pem
+wp-content/themes/astra/auth.json
